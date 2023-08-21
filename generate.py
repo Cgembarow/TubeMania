@@ -72,5 +72,3 @@ def wavToOnset(audio_input_filename, audio_output_filename, onset_output_filenam
     output_wave.close()
 
     print("Rhythm file saved as", audio_output_filename)
-
-wavToOnset("output.wav", "test_audio.wav", "test_onsets.txt")
