@@ -41,4 +41,4 @@ def process_and_create_output(input_file_path, output_file_path):
             output_file.write(line + '\n')
 
 # Example usage:
-process_and_create_output('input.txt', 'output.txt')
+process_and_create_output('output.txt', 'output.txt')
