@@ -45,7 +45,6 @@ def wav_to_onset(
             onset_ms = round(
                 onset_sample / float(sample_rate) * 1000.0
             )  # Round onset sample to the nearest whole number in milliseconds
-            print("Onset detected at sample:", onset_sample, " (", onset_ms, " ms)")
             onsets.append(onset_sample)
             line = str(onset_ms) + "\n"
             onset_output += line
