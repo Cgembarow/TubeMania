@@ -3,19 +3,19 @@ import numpy as np
 import aubio
 import wave
 
-# Onset detection parameters
-WIN_S = 512  # fft size
-HOP_S = WIN_S // 2  # hop size
-
-# Beep parameters
-BEEP_FREQ = 4000  # Beep frequency in Hz
-BEEP_DURATION = 0.001  # Beep duration in seconds
+from youtube_to_osu.settings import (
+    WIN_S,
+    HOP_S,
+    BEEP_FREQ,
+    BEEP_DURATION,
+    DEFAULT_SAMPLERATE,
+)
 
 
 def wav_to_onset(
     audio_input_filename,
     onset_output_filename,
-    sample_rate=0,
+    sample_rate=DEFAULT_SAMPLERATE,
     should_generate_rhythm_audio=False,
     audio_output_filename="",
 ) -> string:

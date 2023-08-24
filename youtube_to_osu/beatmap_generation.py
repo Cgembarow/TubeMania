@@ -1,9 +1,11 @@
 import random
 
+from settings import POSSIBLE_LANE_NUMBERS
+
 
 def onset_to_beatmap(input_file_path, output_file_path):
     # List of possible numbers
-    possible_numbers = [64, 192, 320, 448]
+    possible_numbers = POSSIBLE_LANE_NUMBERS
 
     # Read the lines from the input file
     with open(input_file_path, "r") as input_file:
