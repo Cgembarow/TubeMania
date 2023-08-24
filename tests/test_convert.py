@@ -9,6 +9,7 @@ class TestConvert(TestCase):
     @classmethod
     def tearDownClass(cls):
         os.remove("beatmap.txt")
+        os.remove("beatmap.mp3")
 
     def test_convert(self):
         convert("https://www.youtube.com/watch?v=9bZkp7q19f0")

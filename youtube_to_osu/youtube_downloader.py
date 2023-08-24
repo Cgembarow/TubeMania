@@ -18,13 +18,16 @@ def download(video_url: str, output_file_name: str):
     download_path = audio_stream.download()
 
     # Convert the downloaded audio file to wav with ffmpeg
-    input_stream = ffmpeg.input(download_path)
-    output_stream = ffmpeg.output(
-        input_stream, output_file_name, acodec="pcm_s16le", ac=2, ar="44100"
-    )
-
-    # Convert
-    ffmpeg.run(output_stream, capture_stdout=True, capture_stderr=True)
+    format(download_path, output_file_name, "pcm_s16le")  # For internal use
+    format(download_path, "beatmap.mp3", "mp3")  # For use in Osu
 
     # Cleanup
     os.remove(download_path)
+
+
+def format(input_file_name, output_file_name, codec):
+    (
+        ffmpeg.input(input_file_name)
+        .output(output_file_name, codec=codec, ac=2, ar="44100")
+        .run(capture_stdout=True, capture_stderr=True)
+    )
