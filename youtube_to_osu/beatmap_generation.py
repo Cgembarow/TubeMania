@@ -1,6 +1,6 @@
 import random
 
-from settings import POSSIBLE_LANE_NUMBERS
+from youtube_to_osu.settings import POSSIBLE_LANE_NUMBERS
 
 
 def onset_to_beatmap(input_file_path, output_file_path):
