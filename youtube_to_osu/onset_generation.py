@@ -56,15 +56,6 @@ def wav_to_onset(
     # Close the onset output file
     onset_output_file.close()
 
-    # Calculate the number of notes and average NPS
-    number_of_notes = len(onsets)
-    song_length_seconds = total_frames / sample_rate
-    average_nps = number_of_notes / song_length_seconds
-
-    print("Number of notes:", number_of_notes)
-    print("Song length (seconds):", song_length_seconds)
-    print("Average NPS:", average_nps)
-
     if should_generate_rhythm_audio:
         generate_rhythm_audio(sample_rate, total_frames, onsets, audio_output_filename)
 
