@@ -9,7 +9,9 @@ virtualenv env
 source env/bin/activate
 pip install -r requirements.txt
 ```
+
 ... then test with Python interpreter
+
 ```
 Python 3.10.8 (main, Aug 19 2023, 00:31:12) [GCC 9.4.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
@@ -18,5 +20,13 @@ Type "help", "copyright", "credits" or "license" for more information.
 Number of notes: 1127
 Song length (seconds): 252.3544671201814
 Average NPS: 4.465940361036989
->>> 
+>>>
+```
+
+## Testing
+
+To run the included test,
+
+```
+python3 tests/test_convert.py
 ```

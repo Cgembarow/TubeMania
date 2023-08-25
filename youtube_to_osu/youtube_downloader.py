@@ -1,5 +1,6 @@
 import os
-import re
+
+from youtube_to_osu.settings import WAV_CODEC, MP3_CODEC, BEATMAP_AUDIO_FILENAME
 
 import ffmpeg
 from pytube import YouTube
@@ -18,13 +19,16 @@ def download(video_url: str, output_file_name: str):
     download_path = audio_stream.download()
 
     # Convert the downloaded audio file to wav with ffmpeg
-    input_stream = ffmpeg.input(download_path)
-    output_stream = ffmpeg.output(
-        input_stream, output_file_name, acodec="pcm_s16le", ac=2, ar="44100"
-    )
-
-    # Convert
-    ffmpeg.run(output_stream, capture_stdout=True, capture_stderr=True)
+    format(download_path, output_file_name, WAV_CODEC)  # For internal use
+    format(download_path, BEATMAP_AUDIO_FILENAME, MP3_CODEC)  # For use in Osu
 
     # Cleanup
     os.remove(download_path)
+
+
+def format(input_file_name, output_file_name, codec):
+    (
+        ffmpeg.input(input_file_name)
+        .output(output_file_name, codec=codec, ac=2, ar="44100")
+        .run(capture_stdout=True, capture_stderr=True)
+    )

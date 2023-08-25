@@ -3,19 +3,19 @@ import numpy as np
 import aubio
 import wave
 
-# Onset detection parameters
-WIN_S = 512  # fft size
-HOP_S = WIN_S // 2  # hop size
-
-# Beep parameters
-BEEP_FREQ = 4000  # Beep frequency in Hz
-BEEP_DURATION = 0.001  # Beep duration in seconds
+from youtube_to_osu.settings import (
+    WIN_S,
+    HOP_S,
+    BEEP_FREQ,
+    BEEP_DURATION,
+    DEFAULT_SAMPLERATE,
+)
 
 
 def wav_to_onset(
     audio_input_filename,
     onset_output_filename,
-    sample_rate=0,
+    sample_rate=DEFAULT_SAMPLERATE,
     should_generate_rhythm_audio=False,
     audio_output_filename="",
 ) -> string:
@@ -55,15 +55,6 @@ def wav_to_onset(
 
     # Close the onset output file
     onset_output_file.close()
-
-    # Calculate the number of notes and average NPS
-    number_of_notes = len(onsets)
-    song_length_seconds = total_frames / sample_rate
-    average_nps = number_of_notes / song_length_seconds
-
-    print("Number of notes:", number_of_notes)
-    print("Song length (seconds):", song_length_seconds)
-    print("Average NPS:", average_nps)
 
     if should_generate_rhythm_audio:
         generate_rhythm_audio(sample_rate, total_frames, onsets, audio_output_filename)
