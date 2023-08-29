@@ -1,13 +1,13 @@
-# Youtube To Osu Converter
+# TubeMania
 
 This is a Python module that has a helpful function for converting YouTube links into playable OSU beatmaps
 
-```
+```console
 sudo apt update && sudo apt upgrade
 sudo apt install ffmpeg
 virtualenv env
 source env/bin/activate
-pip install -r requirements.txt
+pip install -e .
 ```
 
 ... then test with Python interpreter
@@ -28,5 +28,5 @@ Average NPS: 4.465940361036989
 To run the included test,
 
 ```
-python3 tests/test_convert.py
+pytest
 ```
