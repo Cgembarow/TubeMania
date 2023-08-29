@@ -26,8 +26,8 @@ class TestConvert(TestCase):
             assert int(sections[0]) in [64, 192, 320, 448], "1st section"
             assert int(sections[1]) in 192, "2nd section check"
             assert int(sections[2]) >= last_timestamp_seen, "Timestamp is increasing"
-            assert int(sections[3]), 1
-            assert int(sections[4]), 0
+            assert int(sections[3]) == 1
+            assert int(sections[4]) == 0
             assert str(sections[5]) == "0:0:0:0:"
 
 
